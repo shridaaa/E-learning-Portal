@@ -1,0 +1,35 @@
+{% extends './base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Search Users</h1>
+    <form method="GET" action="{% url 'search_users' %}">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search users..." name="query">
+            <button class="btn btn-outline-secondary" type="submit">Search</button>
+        </div>
+    </form>
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Students</h2>
+            <div class="list-group">
+                {% for student in students %}
+                <a href="#" class="list-group-item">{{ student.username }}</a>
+                {% empty %}
+                <p>No students found</p>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h2>Teachers</h2>
+            <div class="list-group">
+                {% for teacher in teachers %}
+                <a href="#" class="list-group-item">{{ teacher.username }}</a>
+                {% empty %}
+                <p>No teachers found</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

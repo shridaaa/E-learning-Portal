@@ -1,0 +1,27 @@
+<!-- student_course_enrollment.html -->
+
+{% extends './base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Available Courses</h1>
+    <div class="row">
+        {% for course in available_courses %}
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ course.name }}</h5>
+                    <p class="card-text">Description: {{ course.description }}</p>
+                    <p class="card-text">Teacher: {{ course.teacher }}</p>
+                    <form method="post" action="{% url 'student_course_enrollment' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="course_id" value="{{ course.id }}">
+                        <button type="submit" class="btn btn-primary">Enroll</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

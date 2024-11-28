@@ -1,0 +1,64 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS via CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <title>Multiple user login</title>
+</head>
+
+<body>
+    <div class="content">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 contents">
+                    <div class="row justify-content-center">
+                        <div class="col-md-12">
+                            <div class="form-block">
+                                <div class="mb-4">
+                                    <h1>Welcome To E-Learning Portal</h1>
+                                </div>
+                                <label>Log in if you already have registered!</label>
+                                <div class="form-group last mb-4 ">
+                                    <div>
+                                        <button class="btn btn-pill  btn-block btn-primary index_buttons"><a
+                                                href="{% url 'login_view' %}">login</a></button>
+                                    </div>
+                                </div>
+                                <label>If not register here!</label>
+                                <div class="form-group last mb-4">
+                                    <div><button class="btn btn-pill  btn-block btn-primary index_buttons"><a
+                                                href="{% url 'register' %}">register</a></button></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- jQuery via CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- Popper.js via CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <!-- Bootstrap JavaScript via CDN -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Your custom JavaScript file -->
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

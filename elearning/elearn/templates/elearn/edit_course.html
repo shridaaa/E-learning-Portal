@@ -1,0 +1,49 @@
+{% extends './base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mt-4">Edit Course: {{ course.name }}</h1>
+
+    <!-- Form for editing course name and description -->
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="courseName">Course Name:</label>
+            <input type="text" class="form-control" id="courseName" name="name" value="{{ course.name }}">
+        </div>
+        <div class="form-group">
+            <label for="courseDescription">Course Description:</label>
+            <textarea class="form-control" id="courseDescription" name="description">{{ course.description }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Save Course</button>
+    </form>
+
+    <!-- Display existing course materials -->
+    <h2>Existing Course Materials:</h2>
+    <ul class="list-group mb-4">
+        {% for material in course_materials %}
+        <li class="list-group-item">
+            <strong>Name:</strong> {{ material.name }}<br>
+            <strong>File:</strong> <a href="{{ material.file.url }}">{{ material.file.name }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <!-- Form for adding new course materials -->
+    <h2>Add New Course Material:</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_name">Material Name:</label>
+            <input type="text" class="form-control" id="id_name" name="name">
+        </div>
+        <div class="form-group">
+            <label for="id_file">Material File:</label>
+            <input type="file" class="form-control-file" id="id_file" name="file">
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+{% endblock %}

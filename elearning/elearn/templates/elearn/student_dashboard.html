@@ -1,0 +1,26 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <h1>Welcome, {{ request.user.student }} : {{student.first_name}} {{student.last_name}}</h1>
+    <h2>Your Courses:</h2>
+    <ul class="list-group">
+        {% for course in student_courses %}
+        <li class="list-group-item">
+            <h5 class="mb-1">{{ course.name }}</h5>
+            <p class="mb-1">Description: {{ course.description }}</p>
+            <a href="{% url 'student_course_material' course.id %}" class="btn btn-primary">View Course
+                Materials</a>
+        </li>
+        {% empty %}
+        <li class="list-group-item">No courses found.</li>
+        {% endfor %}
+    </ul>
+    <h2>Explore Other Courses:</h2>
+    <a href="{% url 'student_course_enrollment' %}" class="btn btn-success mt-3">Enroll in Courses</a>
+</div>
+
+
+{% endblock %}

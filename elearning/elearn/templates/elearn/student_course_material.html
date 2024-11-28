@@ -1,0 +1,23 @@
+{% extends './base.html' %}
+
+{% block content %}
+
+
+<div class="container">
+    <h1>Course: {{ course.name }}</h1>
+    <h2>Course Materials</h2>
+    <ul class="list-group">
+        {% for material in course_materials %}
+        <li class="list-group-item">
+            <h5 class="mb-1">Title: {{ material.name }}</h5>
+            <p class="mb-1">File: <a href="{{ material.file.url }}">{{ material.file.name }}</a></p>
+        </li>
+        {% empty %}
+        <li class="list-group-item">No course materials found.</li>
+        {% endfor %}
+    </ul>
+    <!-- Button to feedback submission page -->
+    <a href="{% url  'student_feedback_form' course.id %}" class="btn btn-primary mt-3">Submit Course Feedback</a>
+</div>
+
+{% endblock %}

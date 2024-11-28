@@ -1,0 +1,22 @@
+
+
+/* Style for the teacher's name */
+h1 {
+    margin-top: 20px;
+}
+
+/* Style for the course list */
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+/* Style for each course item */
+li {
+    margin-bottom: 20px;
+}
+
+/* Style for the create course button */
+.btn-primary {
+    margin-top: 20px;
+}

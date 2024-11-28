@@ -1,0 +1,34 @@
+{% extends './base.html' %}
+
+{% block content %}
+
+
+<body>
+    <div class="container">
+        <h1 class="mt-5">Welcome, {{ teacher.user }} : {{teacher.first_name}} {{teacher.last_name}}</h1>
+        <h2 class="mt-4">Your Courses</h2>
+        <ul class="list-group mt-4">
+            {% for course in courses %}
+            <li class="list-group-item">
+                <h3>{{ course.name }}</h3>
+                <p>Description: {{ course.description }}</p>
+                {% if course.course_materials %}
+                <p>Course Materials: <a href="{{ course.course_materials.url }}">{{ course.course_materials.name }}</a>
+                </p>
+                {% endif %}
+                <!-- Add edit course link -->
+                <a href="{% url 'edit_course' course.id %}" class="btn btn-secondary">Edit Course</a>
+                <a href="{% url 'edit_students_in_course' course.id %}" class="btn btn-secondary">Edit students</a>
+            </li>
+            {% empty %}
+            <li class="list-group-item">No courses found.</li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'create_course' %}" class="btn btn-primary mt-4">Create Course</a>
+
+    </div>
+</body>
+
+</html>
+
+{% endblock %}
